@@ -14,6 +14,8 @@ Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 | `aula-simples/index.html` | **Componente que se replica ao vivo em aula** — grid responsivo de cards, ~25 linhas | Domínio Técnico (40%) + Qualidade do Código (30%) |
 | `aula-simples/cola.md` | Roteiro de digitação + as 4 frases pra falar durante o live coding | apoio ao Pitch |
 | `componente/index.html` | Versão elaborada (navbar + cards + form) — backup / prova de domínio | Domínio Técnico (40%) |
+| `com-framework/index.html` | Mesmo card grid, mas componentizado em React (CDN, sem build) — mostra como o framework tira a "poluição" | Domínio Técnico (40%) |
+| `com-framework/por-que.md` | Explicação antes×depois: papel do framework + frase de efeito p/ o pitch | apoio ao Pitch |
 | `pitch.md` | Roteiro do pitch cronometrado (3–5 min), divisão da dupla, munição p/ perguntas | Comunicação/Pitch (20%) |
 
 ## Como rodar

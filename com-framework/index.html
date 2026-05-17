@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind v4 via CDN (mesmo do aula-simples) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- React via CDN — roda no navegador, ZERO build, igual ao Tailwind CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-100 p-6">
+
+  <div id="app"></div>
+
+  <script type="text/babel">
+    // ============================================================
+    // O COMPONENTE: a "sopa de classes" Tailwind aparece UMA vez.
+    // É o mesmo card do aula-simples/index.html — só que agora
+    // escrito UMA vez e reaproveitado com props.
+    // ============================================================
+    function Card({ nome, desc }) {
+      return (
+        <div className="bg-white p-5 rounded-xl shadow flex flex-col gap-2">
+          <h2 className="font-semibold">{nome}</h2>
+          <p className="text-slate-500 text-sm">{desc}</p>
+          <button className="bg-indigo-600 text-white py-2 rounded mt-2">Comprar</button>
+        </div>
+      );
+    }
+
+    // Os dados ficam separados da apresentação
+    const produtos = [
+      { nome: "Fone",    desc: "Bluetooth, 30h de bateria." },
+      { nome: "Teclado", desc: "Mecânico, retroiluminado." },
+      { nome: "Webcam",  desc: "1080p, foco automático." },
+    ];
+
+    function App() {
+      return (
+        <>
+          <h1 className="text-2xl font-bold mb-4">Produtos</h1>
+
+          {/* Repare: AQUI o HTML fica LIMPO. Nenhuma classe Tailwind.
+              Só <Card> reaproveitado. A poluição ficou presa no componente. */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {produtos.map((p) => (
+              <Card key={p.nome} nome={p.nome} desc={p.desc} />
+            ))}
+          </div>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+  </script>
+
+</body>
+</html>
