@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Seminário Tailwind — App interativa</title>
+  <title>Mini Seminário Tailwind — App com framework (React)</title>
 
   <!-- Tailwind + React, tudo via CDN. Zero instalação, zero build. -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -16,50 +16,80 @@
   <div id="app"></div>
 
   <script type="text/babel">
-    const { useState } = React;
+    const { useState, useId } = React;
+
+    // ===================================================================
+    // Card: a "sopa de classes" Tailwind aparece UMA vez, aqui dentro.
+    // É um componente de apresentação — recebe dados por props e não
+    // sabe de onde vêm. Reusável: o pai desenha N cards sem repetir HTML.
+    // ===================================================================
+    function Card({ nome, onRemover }) {
+      return (
+        <article className="bg-white p-5 rounded-xl shadow flex flex-col gap-2">
+          <h2 className="font-semibold">{nome}</h2>
+          <button
+            onClick={onRemover}
+            className="text-red-500 text-sm self-start hover:underline"
+          >
+            remover
+          </button>
+        </article>
+      );
+    }
 
     function App() {
-      // useState guarda a lista de produtos. Mudou a lista -> a tela se redesenha.
-      const [produtos, setProdutos] = useState(["Fone", "Teclado", "Webcam"]);
+      // Estado: id estável por item (boa prática — key por índice quebra
+      // a reconciliação do React quando a lista muda no meio).
+      const [produtos, setProdutos] = useState([
+        { id: "p1", nome: "Fone" },
+        { id: "p2", nome: "Teclado" },
+        { id: "p3", nome: "Webcam" },
+      ]);
       const [nome, setNome] = useState("");
+      const inputId = useId(); // id acessível para o <label>
 
       function adicionar() {
-        if (nome === "") return;
-        setProdutos([...produtos, nome]); // adiciona um card
+        const limpo = nome.trim();
+        if (!limpo) return; // não adiciona vazio
+        // update funcional: deriva do estado anterior, não do fechado
+        setProdutos((prev) => [...prev, { id: crypto.randomUUID(), nome: limpo }]);
         setNome("");
       }
 
-      function remover(i) {
-        setProdutos(produtos.filter((_, x) => x !== i)); // tira o card
+      function remover(id) {
+        setProdutos((prev) => prev.filter((p) => p.id !== id));
       }
 
       return (
-        <div>
+        <main className="max-w-4xl mx-auto">
           <h1 className="text-2xl font-bold mb-4">Produtos</h1>
 
-          <input
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            placeholder="Nome do produto"
-            className="border p-2 rounded mr-2"
-          />
-          <button onClick={adicionar} className="bg-indigo-600 text-white px-4 py-2 rounded">
-            ＋ Adicionar
-          </button>
+          {/* <form> + onSubmit: Enter funciona e é acessível */}
+          <form
+            className="flex flex-col sm:flex-row gap-2 mb-6"
+            onSubmit={(e) => { e.preventDefault(); adicionar(); }}
+          >
+            <label htmlFor={inputId} className="sr-only">Nome do produto</label>
+            <input
+              id={inputId}
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              placeholder="Nome do produto"
+              className="flex-1 border border-slate-300 p-2 rounded"
+            />
+            <button type="submit" className="bg-indigo-600 text-white px-5 py-2 rounded">
+              ＋ Adicionar
+            </button>
+          </form>
 
-          {/* grid-cols-1 md:grid-cols-3 = 1 coluna no celular, 3 no PC.
-              O "md:" vira media query sozinho. */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            {produtos.map((item, i) => (
-              <div key={i} className="bg-white p-5 rounded-xl shadow">
-                <h2 className="font-semibold">{item}</h2>
-                <button onClick={() => remover(i)} className="text-red-500 text-sm mt-2">
-                  remover
-                </button>
-              </div>
+          {/* grid-cols-1 sm:2 md:3 = responsivo sem escrever @media.
+              O HTML aqui fica LIMPO: só <Card> reusado. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {produtos.map((p) => (
+              <Card key={p.id} nome={p.nome} onRemover={() => remover(p.id)} />
             ))}
           </div>
-        </div>
+        </main>
       );
     }
 

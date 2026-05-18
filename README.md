@@ -7,28 +7,25 @@ Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 
 🔗 **App ao vivo:** `https://pedrom-dev-git.github.io/seminario-tailwind/` _(publicado no Dia 2)_
 
-## Conteúdo do repositório
+## A demonstração em 2 atos
 
-| Arquivo | O que é | Critério de avaliação |
+| | Arquivo | O que mostra |
 |---|---|---|
-| **`index.html`** | **App React interativa** — adiciona/remove card ao vivo, grid responsivo. É a estrela da apresentação (URL acima) | Domínio Técnico (40%) + Qualidade (30%) |
-| `enunciado.pdf` | Enunciado original da atividade | — |
-| `artigo-tecnico.md` | Mini artigo técnico (histórico, filosofia, box model/flexbox/responsividade, vantagens×CSS3, casos de uso, instalação CDN+NPM, referências) | Artigo Técnico (10%) + base p/ Domínio Técnico (40%) |
-| `aula-simples/index.html` | **Componente que se replica ao vivo em aula** — grid responsivo de cards, ~25 linhas | Domínio Técnico (40%) + Qualidade do Código (30%) |
-| `aula-simples/cola.md` | Roteiro de digitação + as 4 frases pra falar durante o live coding | apoio ao Pitch |
-| `componente/index.html` | Versão elaborada (navbar + cards + form) — backup / prova de domínio | Domínio Técnico (40%) |
-| `com-framework/index.html` | Mesmo card grid, mas componentizado em React (CDN, sem build) — mostra como o framework tira a "poluição" | Domínio Técnico (40%) |
-| `com-framework/por-que.md` | Explicação antes×depois: papel do framework + frase de efeito p/ o pitch | apoio ao Pitch |
-| `pitch.md` | Roteiro do pitch cronometrado (3–5 min), divisão da dupla, munição p/ perguntas | Comunicação/Pitch (20%) |
+| **Ato 1 — só Tailwind** | `aula-simples/index.html` | HTML puro + Tailwind, **sem framework**. Card copiado 3× → a "poluição" (o problema) |
+| **Ato 2 — com framework** | `index.html` (raiz) | React: card vira **componente** (1×), tela interativa (add/remove), grid responsivo → a solução |
 
-## Como rodar
+👉 **Passo a passo para rodar (CDN e NPM):** ver [`COMO-RODAR.md`](COMO-RODAR.md)
 
-Abrir qualquer `index.html` direto no navegador — usa Tailwind v4 via CDN, **sem build**.
-Redimensionar a janela para ver o grid responsivo (1 → 3 colunas no breakpoint `md:` = 768px).
+## Demais arquivos
 
-```bash
-xdg-open index.html          # a app interativa (estrela da apresentação)
-```
+| Arquivo | O que é | Critério |
+|---|---|---|
+| `artigo-tecnico.md` | Mini artigo (histórico, box model/flexbox/responsividade, CSS3×Tailwind, instalação) | Artigo (10%) |
+| `pitch.md` | Roteiro do pitch 3–5 min, divisão dos 3, munição p/ perguntas | Pitch (20%) |
+| `com-framework/por-que.md` | Explicação antes×depois + frase de efeito (papel do framework) | apoio ao Pitch |
+| `aula-simples/cola.md` | Roteiro de digitação (se precisarem digitar ao vivo) | apoio |
+| `componente/index.html` · `com-framework/index.html` | Variações de backup (versão elaborada / React estático) | reserva |
+| `enunciado.pdf` | Enunciado original | — |
 
 ## Checklist de entrega
 
