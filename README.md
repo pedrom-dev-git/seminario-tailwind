@@ -3,7 +3,7 @@
 Trabalho da disciplina **Desenvolvimento Web** (Prof. Iuri Santos · Unilasalle 2026/1).
 Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 
-**Dupla:** _[preencher nomes]_
+**Equipe:** João C. · Carlos · Pedro Mendonça
 
 🔗 **App ao vivo:** `https://pedrom-dev-git.github.io/seminario-tailwind/` _(publicado no Dia 2)_
 

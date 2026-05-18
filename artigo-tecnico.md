@@ -2,7 +2,7 @@
 
 > **Disciplina:** Desenvolvimento Web · **Prof.:** Iuri Santos · Unilasalle 2026/1
 > **Framework:** Tailwind CSS (utility-first) · **Versão de referência:** 4.2.x
-> **Dupla:** _[preencher nomes]_
+> **Equipe:** João C. · Carlos · Pedro Mendonça
 
 ---
 
