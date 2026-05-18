@@ -5,10 +5,13 @@ Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 
 **Dupla:** _[preencher nomes]_
 
+🔗 **App ao vivo:** `https://pedrom-dev-git.github.io/seminario-tailwind/` _(publicado no Dia 2)_
+
 ## Conteúdo do repositório
 
 | Arquivo | O que é | Critério de avaliação |
 |---|---|---|
+| **`index.html`** | **App React interativa** — adiciona/remove card ao vivo, grid responsivo. É a estrela da apresentação (URL acima) | Domínio Técnico (40%) + Qualidade (30%) |
 | `enunciado.pdf` | Enunciado original da atividade | — |
 | `artigo-tecnico.md` | Mini artigo técnico (histórico, filosofia, box model/flexbox/responsividade, vantagens×CSS3, casos de uso, instalação CDN+NPM, referências) | Artigo Técnico (10%) + base p/ Domínio Técnico (40%) |
 | `aula-simples/index.html` | **Componente que se replica ao vivo em aula** — grid responsivo de cards, ~25 linhas | Domínio Técnico (40%) + Qualidade do Código (30%) |
@@ -24,17 +27,21 @@ Abrir qualquer `index.html` direto no navegador — usa Tailwind v4 via CDN, **s
 Redimensionar a janela para ver o grid responsivo (1 → 3 colunas no breakpoint `md:` = 768px).
 
 ```bash
-xdg-open aula-simples/index.html
+xdg-open index.html          # a app interativa (estrela da apresentação)
 ```
 
 ## Checklist de entrega
 
 - [ ] Nomes da dupla preenchidos (`README.md`, `artigo-tecnico.md`, `pitch.md`)
+- [ ] App publicada no GitHub Pages e URL testada (desktop + celular)
 - [ ] Artigo exportado para **PDF** (entregável exige PDF)
 - [ ] Pitch ensaiado com cronômetro (alvo 4:30, teto 5:00)
-- [ ] Live coding ensaiado digitando do zero olhando só o esqueleto da `cola.md`
-- [ ] Plano B se a internet cair na sala (CDN precisa de rede) — print/gravação salvos
+- [ ] Fluxo da demo ensaiado (abrir URL → redimensionar → adicionar card)
+- [ ] Plano B offline: cópia local + gravação (CDN/Pages precisam de rede)
 - [ ] Uso de IA citado conforme política da disciplina
+
+> `aula-simples/` continua no repo como material de apoio (versão "digitável ao vivo"),
+> mas o foco da apresentação é a app interativa + URL.
 
 ## Nota de integridade acadêmica
 

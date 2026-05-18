@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Seminário Tailwind — App interativa</title>
+
+  <!-- Tailwind v4 via CDN — zero build -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- React via CDN — roda no navegador, sem build (igual ao Tailwind) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-100 min-h-screen p-6">
+
+  <div id="app"></div>
+
+  <script type="text/babel">
+    // useState = a "memória" do React. É o que torna a tela INTERATIVA:
+    // quando o estado muda, o React re-desenha sozinho o que mudou.
+    const { useState } = React;
+
+    // ============================================================
+    // COMPONENTE Card — a "sopa de classes" Tailwind aparece UMA vez.
+    // onRemover é uma função passada por prop (o pai decide o que faz).
+    // ============================================================
+    function Card({ nome, desc, onRemover }) {
+      return (
+        <div className="bg-white p-5 rounded-xl shadow flex flex-col gap-2 relative">
+          {/* botão remover no canto — demonstra interação por card */}
+          <button
+            onClick={onRemover}
+            className="absolute top-2 right-3 text-slate-400 hover:text-red-500"
+            aria-label="Remover produto"
+          >
+            ✕
+          </button>
+          <h2 className="font-semibold">{nome}</h2>
+          <p className="text-slate-500 text-sm flex-1">{desc}</p>
+          <button className="bg-indigo-600 text-white py-2 rounded mt-2 hover:bg-indigo-700 transition-colors">
+            Comprar
+          </button>
+        </div>
+      );
+    }
+
+    function App() {
+      // Lista inicial de produtos — vive no ESTADO (não é mais fixa)
+      const [produtos, setProdutos] = useState([
+        { id: 1, nome: "Fone",    desc: "Bluetooth, 30h de bateria." },
+        { id: 2, nome: "Teclado", desc: "Mecânico, retroiluminado." },
+        { id: 3, nome: "Webcam",  desc: "1080p, foco automático." },
+      ]);
+
+      // Texto digitado no input — também é estado (input "controlado")
+      const [nome, setNome] = useState("");
+
+      // Adiciona um card novo na lista
+      function adicionar() {
+        const novo = {
+          id: Date.now(),
+          nome: nome.trim() || `Produto ${produtos.length + 1}`,
+          desc: "Adicionado pelo usuário ao vivo.",
+        };
+        setProdutos([...produtos, novo]); // novo array → React re-desenha
+        setNome("");                       // limpa o input
+      }
+
+      // Remove o card pelo id
+      function remover(id) {
+        setProdutos(produtos.filter((p) => p.id !== id));
+      }
+
+      return (
+        <main className="max-w-5xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-bold mb-1">Produtos</h1>
+          <p className="text-slate-500 mb-6">
+            Digite um nome e clique em “＋ Adicionar”. Redimensione a janela: o grid vai de 1 a 3 colunas.
+          </p>
+
+          {/* Barra de ação: input + botão. flex empilha no mobile, vira linha no desktop */}
+          <div className="flex flex-col sm:flex-row gap-2 mb-6">
+            <input
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && adicionar()}
+              placeholder="Nome do produto"
+              className="flex-1 border border-slate-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+            <button
+              onClick={adicionar}
+              className="bg-indigo-600 text-white font-medium px-5 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              ＋ Adicionar
+            </button>
+          </div>
+
+          {/* GRID RESPONSIVO: 1 coluna no mobile, 2 a partir de sm, 3 a partir de md.
+              Nenhuma @media escrita à mão — os prefixos sm:/md: viram media query. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {produtos.map((p) => (
+              <Card
+                key={p.id}
+                nome={p.nome}
+                desc={p.desc}
+                onRemover={() => remover(p.id)}
+              />
+            ))}
+          </div>
+
+          {produtos.length === 0 && (
+            <p className="text-slate-400 mt-8 text-center">
+              Nenhum produto. Adicione um acima.
+            </p>
+          )}
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+  </script>
+
+</body>
+</html>
