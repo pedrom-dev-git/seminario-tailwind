@@ -5,14 +5,16 @@ Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 
 **Equipe:** João C. · Carlos · Pedro Mendonça
 
-🔗 **App ao vivo:** `https://pedrom-dev-git.github.io/seminario-tailwind/` _(publicado no Dia 2)_
+🔗 **No ar após o Dia 2** (um deploy serve as duas páginas):
 
 ## A demonstração em 2 atos
 
-| | Arquivo | O que mostra |
-|---|---|---|
-| **Ato 1 — só Tailwind** | `aula-simples/index.html` | HTML puro + Tailwind, **sem framework**. Card copiado 3× → a "poluição" (o problema) |
-| **Ato 2 — com framework** | `index.html` (raiz) | React: card vira **componente** (1×), tela interativa (add/remove), grid responsivo → a solução |
+| | Arquivo | URL ao vivo | O que mostra |
+|---|---|---|---|
+| **Ato 1 — só Tailwind** | `aula-simples/index.html` | `…github.io/seminario-tailwind/aula-simples/` | HTML puro + Tailwind, **sem framework**. Card copiado 3× → a "poluição" (o problema) |
+| **Ato 2 — com framework** | `index.html` (raiz) | `…github.io/seminario-tailwind/` | React: card vira **componente** (1×), tela interativa (add/remove), grid responsivo → a solução |
+
+> Base das URLs: `https://pedrom-dev-git.github.io/seminario-tailwind/`
 
 👉 **Passo a passo para rodar (CDN e NPM):** ver [`COMO-RODAR.md`](COMO-RODAR.md)
 
