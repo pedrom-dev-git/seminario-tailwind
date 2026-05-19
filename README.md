@@ -24,6 +24,7 @@ Framework: **Tailwind CSS** (utility-first), versão de referência 4.2.x.
 |---|---|---|
 | `artigo-tecnico.md` | Mini artigo (histórico, box model/flexbox/responsividade, CSS3×Tailwind, instalação) | Artigo (10%) |
 | `pitch.md` | Roteiro do pitch 3–5 min, divisão dos 3, munição p/ perguntas | Pitch (20%) |
+| `apresentacao.md` | **Coreografia da demo de 2 atos + respostas de defesa** (JSX, class×className, pra que serve framework, o que o React faz) | estudo/defesa |
 | `com-framework/por-que.md` | Explicação antes×depois + frase de efeito (papel do framework) | apoio ao Pitch |
 | `aula-simples/cola.md` | Roteiro de digitação (se precisarem digitar ao vivo) | apoio |
 | `componente/index.html` · `com-framework/index.html` | Variações de backup (versão elaborada / React estático) | reserva |
